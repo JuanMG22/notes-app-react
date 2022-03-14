@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Note from './components/Note'
-import Notification from './components/Notification'
 import noteService from './services/notes'
+import './index.css'
+import NavBar from './components/NavBar'
+import NoteForm from './components/NoteForm'
+import Loader from './components/Loader'
 
 const App = () => {
-  const [notes, setNotes] = useState([]) 
+  const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
-  const [showAll, setShowAll] = useState(true)
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     noteService
@@ -15,41 +17,23 @@ const App = () => {
       .then(initialNotes => {
         setNotes(initialNotes)
       })
-  }, [])
+      .finally(() => {
+        setLoading(false)
+      })
+  }, [notes])
 
   const addNote = (event) => {
     event.preventDefault()
     const noteObject = {
-      content: newNote,
-      date: new Date().toISOString(),
-      important: Math.random() > 0.5,
-      id: notes.length + 1,
+      content: newNote
     }
-  
+    setLoading(true)
     noteService
       .create(noteObject)
       .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
         setNewNote('')
-      })
-  }
-
-  const toggleImportanceOf = (id) => {
-    const note = notes.find(n => n.id === id)
-    const changedNote = { ...note, important: !note.important }
-  
-    noteService
-      .update(id, changedNote)
-      .then(returnedNote => {
-        setNotes(notes.map(note => note.id !== id ? note : returnedNote))
-      })
-      .catch(error => {
-        setErrorMessage(
-          `Note '${note.content}' was already removed from server`
-        )
-        setTimeout(() => {
-          setErrorMessage(null)
-        }, 5000)   
+        setLoading(false)
       })
   }
 
@@ -57,37 +41,40 @@ const App = () => {
     setNewNote(event.target.value)
   }
 
-  const notesToShow = showAll
-    ? notes
-    : notes.filter(note => note.important)
-
   return (
     <div>
-      <h1>Notes</h1>
-      <Notification message={errorMessage} />
-      <div>
-        <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'important' : 'all' }
-        </button>
-      </div>      
-      <ul>
-        {notesToShow.map((note, i) => 
-          <Note
-            key={i}
-            note={note} 
-            toggleImportance={() => toggleImportanceOf(note.id)}
-          />
-        )}
-      </ul>
-      <form onSubmit={addNote}>
-        <input
-          value={newNote}
-          onChange={handleNoteChange}
-        />
-        <button type="submit">save</button>
-      </form>   
+      <NavBar />
+      <h1 className='mt-20 text-3xl flex justify-center'>Lista de Notas</h1>
+      {loading
+        ? (
+          <Loader />
+          )
+        : (
+          <>
+            <div
+              className='container mb-2 flex mx-auto w-full items-center justify-center'
+            >
+              <ul className='flex flex-col p-4'>
+                {notes.map((note) =>
+                  <Note
+                    key={note.id}
+                    id={note.id}
+                    note={note}
+                    setLoading={setLoading}
+                  />
+                )}
+              </ul>
+            </div>
+          </>
+          )}
+      <NoteForm
+        addNote={addNote}
+        newNote={newNote}
+        handleNoteChange={handleNoteChange}
+      />
+
     </div>
   )
 }
 
-export default App 
+export default App
