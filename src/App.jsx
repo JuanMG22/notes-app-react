@@ -5,6 +5,7 @@ import './index.css'
 import NavBar from './components/NavBar'
 import NoteForm from './components/NoteForm'
 import Loader from './components/Loader'
+import Footer from './components/Footer'
 
 const App = () => {
   const [notes, setNotes] = useState([])
@@ -72,7 +73,7 @@ const App = () => {
         newNote={newNote}
         handleNoteChange={handleNoteChange}
       />
-
+      <Footer />
     </div>
   )
 }
