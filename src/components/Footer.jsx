@@ -2,7 +2,7 @@ import logo from '../logo.png'
 
 const Footer = () => {
   return (
-    <footer className='p-4 bg-white sm:p-6 dark:bg-gray-900 fixed bottom-0 w-full'>
+    <footer className='p-4 bg-white sm:p-6 dark:bg-gray-900 absolute bottom-0 w-full'>
       <div className='md:flex md:justify-evenly'>
         <div className='mb-0'>
           <a href='#' className='flex items-center justify-center' rel='noreferrer'>
