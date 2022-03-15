@@ -38,7 +38,7 @@ const NotesContainer = () => {
     setNewNote(event.target.value)
   }
   return (
-    <main>
+    <>
       <h1 className='mt-20 text-3xl flex justify-center'>Lista de Notas</h1>
       <NotesList
         loading={loading}
@@ -51,7 +51,7 @@ const NotesContainer = () => {
         newNote={newNote}
         handleNoteChange={handleNoteChange}
       />
-    </main>
+    </>
   )
 }
 
