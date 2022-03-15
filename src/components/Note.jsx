@@ -9,7 +9,8 @@ const Note = ({ note, setLoading }) => {
       .then(() => {
         setTimeout(() => {
           setLoading(false)
-        }, 1000)
+        }, 500)
+        location.reload()
       })
       .catch(err => {
         console.error(err)

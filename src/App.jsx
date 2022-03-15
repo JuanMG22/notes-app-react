@@ -21,7 +21,7 @@ const App = () => {
       .finally(() => {
         setLoading(false)
       })
-  }, [notes])
+  }, [])
 
   const addNote = (event) => {
     event.preventDefault()
@@ -62,6 +62,7 @@ const App = () => {
                     id={note.id}
                     note={note}
                     setLoading={setLoading}
+                    setNotes={setNotes}
                   />
                 )}
               </ul>

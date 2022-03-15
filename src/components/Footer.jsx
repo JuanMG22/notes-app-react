@@ -4,19 +4,19 @@ const Footer = () => {
   return (
     <footer className='p-4 bg-white sm:p-6 dark:bg-gray-900 fixed bottom-0 w-full'>
       <div className='md:flex md:justify-evenly'>
-        <div className='mb-6 md:mb-0'>
-          <a href='#' className='flex items-center' rel='noreferrer'>
+        <div className='mb-0'>
+          <a href='#' className='flex items-center justify-center' rel='noreferrer'>
             <img src={logo} className='mr-4 h-10' alt='FlowBite Logo' />
             <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>NOTES APP</span>
           </a>
         </div>
       </div>
-      <hr className='my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8' />
-      <div className='sm:flex sm:items-center sm:justify-center gap-5'>
-        <span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>© 2022 <a href='#' className='hover:underline' rel='noreferrer'>NotesApp</a>
+      <hr className='my-6 border-gray-200 mx-auto dark:border-gray-700 lg:my-8' />
+      <div className='flex items-center justify-center gap-5'>
+        <span className='text-sm text-gray-500 text-center dark:text-gray-400'>© 2022 <a href='#' className='hover:underline' rel='noreferrer'>NotesApp</a>
         </span>
 
-        <div className='flex mt-4 space-x-6 sm:justify-center sm:mt-0'>
+        <div className='flex mt-0 space-x-6 justify-center items-center'>
           <a href='#' className='text-gray-500 hover:text-gray-900 dark:hover:text-white'>
             <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
               <path
