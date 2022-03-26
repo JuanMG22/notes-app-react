@@ -14,7 +14,7 @@
 ### Initialize Project
 To start this project, you must clone or fork the repository
 
-    git clone https://github.com/JuanMG22/guitar-shop.git
+    git clone https://github.com/JuanMG22/notes-app-react.git
 
 Once the repository is cloned, it should be moved to the created folder
 
