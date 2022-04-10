@@ -1,16 +1,22 @@
 import noteService from '../services/notes'
+import Btn from './Btn'
 
-const Note = ({ note, setLoading }) => {
+const Note = ({ note, setLoading, setNotes, notes }) => {
+  const updateNotes = () => {
+    noteService
+      .getAll()
+      .then(updatedNotes => {
+        setNotes(updatedNotes)
+      })
+  }
   const deleteNote = (event) => {
     event.preventDefault()
     setLoading(true)
     noteService
       .remove(note.id)
       .then(() => {
-        setTimeout(() => {
-          setLoading(false)
-        }, 500)
-        location.reload()
+        updateNotes()
+        setTimeout(() => { setLoading(false) }, 300)
       })
       .catch(err => {
         console.error(err)
@@ -28,11 +34,7 @@ const Note = ({ note, setLoading }) => {
             {note.content}
           </div>
         </div>
-        <button
-          className='w-1/4 text-wrap text-center flex text-white text-bold flex-col rounded bg-indigo-600  justify-center items-center p-2'
-        >
-          Borrar
-        </button>
+        <Btn>Borrar</Btn>
       </form>
     </li>
   )
