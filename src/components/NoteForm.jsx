@@ -11,7 +11,6 @@ const NoteForm = ({ addNote, newNote, handleNoteChange }) => {
         />
 
         <button
-          type='submit'
           className='w-[20rem] m-2 rounded px-4 py-2 font-semibold hover:text-bold text-white bg-indigo-600 hover:bg-indigo-700 transition transition-200'
         >
           Agregar
