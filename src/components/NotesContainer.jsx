@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import noteService from '../services/notes'
+import userService from '../services/userService'
+import notesService from '../services/notesService'
 import NoteForm from './NoteForm'
 import NotesList from './NotesList'
 
@@ -8,15 +9,15 @@ const NotesContainer = () => {
   const [newNote, setNewNote] = useState('')
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    noteService
-      .getAll()
-      .then(initialNotes => {
-        setNotes(initialNotes)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+  useEffect(async () => {
+    const userId = localStorage.getItem('userId')
+    try {
+      const userData = await userService.getUser(userId)
+      setNotes(userData.notes)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
   }, [])
 
   const addNote = (event) => {
@@ -25,8 +26,9 @@ const NotesContainer = () => {
       content: newNote
     }
     setLoading(true)
-    noteService
-      .create(noteObject)
+    const token = localStorage.getItem('token')
+    notesService
+      .createNote(noteObject, token)
       .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
         setNewNote('')
@@ -39,7 +41,7 @@ const NotesContainer = () => {
   }
   return (
     <>
-      <h1 className='mt-20 text-3xl flex justify-center'>Lista de Notas</h1>
+      <h1 className='pt-20 text-3xl flex justify-center text-black dark:text-white'>Lista de Notas</h1>
       <NotesList
         loading={loading}
         notes={notes}

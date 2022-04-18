@@ -1,19 +1,18 @@
-import logo from '../logo.png'
+import { Link } from 'wouter'
 
 const Footer = () => {
   return (
-    <footer className='p-4 bg-white sm:p-6 dark:bg-gray-900 w-full'>
-      <div className='md:flex md:justify-evenly'>
+    <footer className='p-4 bg-white sm:p-6 dark:bg-neutral-900 '>
+      <div className='flex justify-center md:flex md:justify-evenly'>
         <div className='mb-0'>
-          <a href='#' className='flex items-center justify-center' rel='noreferrer'>
-            <img src={logo} className='mr-4 h-10' alt='FlowBite Logo' />
-            <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>NOTES APP</span>
-          </a>
+          <Link href='/' className='flex items-center justify-center' rel='noreferrer'>
+            <span className='self-center text-xl font-semibold whitespace-nowrap text-gray-700 dark:text-white'>NOTES APP</span>
+          </Link>
         </div>
       </div>
       <hr className='my-6 border-gray-200 mx-auto dark:border-gray-700 lg:my-8' />
       <div className='flex items-center justify-center gap-5'>
-        <span className='text-sm text-gray-500 text-center dark:text-gray-400'>© 2022 <a href='#' className='hover:underline' rel='noreferrer'>NotesApp</a>
+        <span className='text-sm text-gray-500 text-center dark:text-gray-400'>© 2022 <Link href='/' className='hover:underline' rel='noreferrer'>NotesApp</Link>
         </span>
 
         <div className='flex mt-0 space-x-6 justify-center items-center'>

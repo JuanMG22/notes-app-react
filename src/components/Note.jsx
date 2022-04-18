@@ -1,19 +1,24 @@
-import noteService from '../services/notes'
+import notesService from '../services/notesService'
+import userService from '../services/userService'
 import Btn from './Btn'
 
 const Note = ({ note, setLoading, setNotes, notes }) => {
-  const updateNotes = () => {
-    noteService
-      .getAll()
-      .then(updatedNotes => {
-        setNotes(updatedNotes)
-      })
+  const updateNotes = async () => {
+    const userId = localStorage.getItem('userId')
+    try {
+      const userData = await userService.getUser(userId)
+      setNotes(userData.notes)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
   }
   const deleteNote = (event) => {
     event.preventDefault()
     setLoading(true)
-    noteService
-      .remove(note.id)
+    const token = localStorage.getItem('token')
+    notesService
+      .removeNote(note.id, token)
       .then(() => {
         updateNotes()
         setTimeout(() => { setLoading(false) }, 300)
@@ -34,7 +39,9 @@ const Note = ({ note, setLoading, setNotes, notes }) => {
             {note.content}
           </div>
         </div>
-        <Btn>Borrar</Btn>
+        <Btn btnType='btnNote'>
+          Borrar
+        </Btn>
       </form>
     </li>
   )
