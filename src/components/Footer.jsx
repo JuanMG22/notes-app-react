@@ -11,7 +11,7 @@ const Footer = () => {
         </div>
       </div>
       <hr className='my-6 border-gray-200 mx-auto dark:border-gray-700 lg:my-8' />
-      <div className='flex items-center justify-center gap-5'>
+      <div className='flex items-center justify-center gap-x-5'>
         <span className='text-sm text-gray-500 text-center dark:text-gray-400'>© 2022 <Link href='/' className='hover:underline' rel='noreferrer'>NotesApp</Link>
         </span>
 
