@@ -2,8 +2,8 @@
   "name": "Notes App",
   "short_name": "Notes App",
   "description": "A Vite starter app ready-to-go as a Progressive Web App.",
-  "background_color": "#111827",
-  "theme_color": "#111827",
+  "background_color": "#171717",
+  "theme_color": "#171717",
   "display": "standalone",
   "icons": [
     {
