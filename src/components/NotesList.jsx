@@ -2,7 +2,7 @@ import Note from './Note'
 import Loader from './Loader'
 import EmptyNotes from './EmptyNotes'
 
-const NotesList = ({ loading, notes, setNotes, setLoading }) => {
+const NotesList = ({ loading, notes, setNotes, setLoading, user }) => {
   return (
     <>
       {loading && (<Loader />)}
@@ -13,7 +13,7 @@ const NotesList = ({ loading, notes, setNotes, setLoading }) => {
             <Note
               key={note.id}
               id={note.id}
-              notes={notes}
+              user={user}
               note={note}
               setLoading={setLoading}
               setNotes={setNotes}
