@@ -5,7 +5,7 @@ import Register from '../pages/RegisterPage'
 
 const Main = () => {
   return (
-    <main className='min-h-[84.6vh] sm:min-h-[83.5vh] bg-neutral-200 dark:bg-neutral-800'>
+    <main className='min-h-[84.8vh] sm:min-h-[83.5vh] bg-neutral-200 dark:bg-neutral-800'>
       <Route path='/' component={Home} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
