@@ -4,6 +4,7 @@ import { userContext } from '../../context/UserProvider'
 import userService from '../../services/userService'
 import NavLink from './NavLink'
 import Nav from './Nav'
+import { SidenavPage } from './SideBar'
 
 const NavBar = () => {
   const { logOut, token, userId } = useContext(userContext)
@@ -19,9 +20,7 @@ const NavBar = () => {
 
   return (
     <Nav>
-      <NavLink to='/'>
-        Notes App
-      </NavLink>
+      <SidenavPage />
       {token &&
         <NavLink to='/' click={logOut}>
           {userName}
