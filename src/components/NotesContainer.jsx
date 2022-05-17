@@ -5,7 +5,8 @@ import NoteForm from './NoteForm'
 import NotesList from './NotesList'
 
 const NotesContainer = () => {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState({})
+  const [user, setUser] = useState({})
   const [newNote, setNewNote] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -14,6 +15,7 @@ const NotesContainer = () => {
     try {
       const userData = await userService.getUser(userId)
       setNotes(userData.notes)
+      setUser(userData)
       setLoading(false)
     } catch (error) {
       console.log(error)
@@ -46,6 +48,7 @@ const NotesContainer = () => {
         loading={loading}
         notes={notes}
         setNotes={setNotes}
+        user={user}
         setLoading={setLoading}
       />
       <NoteForm

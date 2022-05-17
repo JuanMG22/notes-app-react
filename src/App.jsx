@@ -1,5 +1,5 @@
 import './index.css'
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer'
 import Main from './components/Main'
 import UserProvider from './context/UserProvider'

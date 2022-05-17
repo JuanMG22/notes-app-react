@@ -5,6 +5,7 @@ export const userContext = createContext()
 
 const UserProvider = ({ children }) => {
   const token = localStorage.getItem('token')
+  const userId = localStorage.getItem('userId')
 
   const [location, setLocation] = useLocation()
 
@@ -17,7 +18,9 @@ const UserProvider = ({ children }) => {
   const contextValue = {
     token,
     logOut,
-    setLocation
+    location,
+    setLocation,
+    userId
   }
 
   return (
