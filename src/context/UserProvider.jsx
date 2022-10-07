@@ -1,10 +1,16 @@
-import { createContext } from 'react'
+import { createContext, useContext } from 'react'
 import { useLocation } from 'wouter'
 
 export const userContext = createContext()
 
+export const useUser = () => {
+  const context = useContext(userContext)
+  return context
+}
+
 const UserProvider = ({ children }) => {
-  const token = localStorage.getItem('token')
+  const getToken = () => localStorage.getItem('token')
+  const token = getToken()
   const userId = localStorage.getItem('userId')
 
   const [location, setLocation] = useLocation()
@@ -16,6 +22,7 @@ const UserProvider = ({ children }) => {
   }
 
   const contextValue = {
+    getToken,
     token,
     logOut,
     location,

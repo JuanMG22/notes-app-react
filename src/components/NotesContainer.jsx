@@ -16,6 +16,7 @@ const NotesContainer = () => {
       const userData = await userService.getUser(userId)
       setNotes(userData.notes)
       setUser(userData)
+      console.log(userData)
       setLoading(false)
     } catch (error) {
       console.log(error)

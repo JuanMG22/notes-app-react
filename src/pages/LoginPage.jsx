@@ -1,11 +1,10 @@
 import LoginForm from '../components/LoginForm'
 import FormTitle from '../components/FormTitle'
 import { Redirect } from 'wouter'
-import { useContext } from 'react'
-import { userContext } from '../context/UserProvider'
+import { useUser } from '../context/UserProvider'
 
 const LoginPage = () => {
-  const { token } = useContext(userContext)
+  const { token } = useUser()
   return (
     <>
       {token && (<Redirect to='/' />)}

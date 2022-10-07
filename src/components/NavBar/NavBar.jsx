@@ -1,12 +1,13 @@
 import { FaSignOutAlt } from 'react-icons/fa'
-import { useContext, useState, useEffect } from 'react'
-import { userContext } from '../../context/UserProvider'
+import { useUser } from '../../context/UserProvider'
+import { useState, useEffect } from 'react'
 import userService from '../../services/userService'
 import NavLink from './NavLink'
 import Nav from './Nav'
 
 const NavBar = () => {
-  const { logOut, token, userId } = useContext(userContext)
+  const { logOut, getToken, userId } = useUser()
+  const token = getToken()
   const [userName, setUserName] = useState('')
   useEffect(async () => {
     try {

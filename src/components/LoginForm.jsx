@@ -30,6 +30,8 @@ const LoginForm = () => {
 
   const { register, resetField, handleSubmit, formState: { errors } } = useForm()
 
+  const { email, password } = errors
+
   return (
     <form method='POST' onSubmit={handleSubmit(onSubmit)}>
       <Label to='email' text='Email' />
@@ -50,7 +52,7 @@ const LoginForm = () => {
           }
         })}
       />
-      {errors.email && (<FormError err={errors.email.message} />)}
+      {email && (<FormError err={email.message} />)}
       <Label to='pass' text='Contraseña' />
       <input
         type='password'
@@ -65,7 +67,7 @@ const LoginForm = () => {
           }
         })}
       />
-      {errors.password && (<FormError err={errors.password.message} />)}
+      {password && (<FormError err={password.message} />)}
       <Btn>
         Iniciar sesión
       </Btn>

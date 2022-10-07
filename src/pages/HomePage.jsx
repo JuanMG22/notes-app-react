@@ -1,11 +1,13 @@
 import { Redirect } from 'wouter'
 import NotesContainer from '../components/NotesContainer'
+import { useUser } from '../context/UserProvider'
 
 const HomePage = () => {
-  const token = localStorage.getItem('token')
+  const { getToken } = useUser()
+
   return (
     <>
-      {!token && (<Redirect to='/login' />)}
+      {!getToken() && (<Redirect to='/login' />)}
       <NotesContainer />
     </>
   )
