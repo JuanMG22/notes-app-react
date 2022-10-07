@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://app--notes.herokuapp.com/api/users'
+const baseUrl = 'https://notes-app-7fit.onrender.com/api/users'
 
 const userRegister = async (userData) => {
   const { data } = await axios.post(baseUrl, userData)
